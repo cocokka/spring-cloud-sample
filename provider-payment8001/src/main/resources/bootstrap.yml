@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path: /payment
+spring:
+  application:
+    name: payment-service
+  cloud:
+    consul:
+      host: master
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        health-check-path: ${server.servlet.context-path}/actuator/health
+        health-check-interval: 15s
+        enabled: true
+        fail-fast: true
+        hostname: 192.168.242.1 # add this in case of consul and services are running on different hosts.
+        prefer-ip-address: true
+      config:
+        format: YAML
+        profile-separator: '-'
+        enabled: true
+        watch:
+          wait-time: 10

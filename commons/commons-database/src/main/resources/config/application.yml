@@ -1,0 +1,26 @@
+database.name: spring_cloud_2024
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://master:3306/${database.name}?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/*.xml
+#  type-aliases-package: com.tinydemo.spring.cloud.sample.payment.entities
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

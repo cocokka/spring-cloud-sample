@@ -1,0 +1,10 @@
+server:
+  port: 8001
+
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  type-aliases-package: com.tinydemo.spring.cloud.sample.payment.entities
+

@@ -1,0 +1,16 @@
+spring:
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
