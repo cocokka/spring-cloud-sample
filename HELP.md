@@ -67,3 +67,8 @@ The following guides illustrate how to use some features concretely:
          return applicationName + "---" + name;
       }
     ```
+* [loadbalancer](https://docs.spring.io/spring-cloud-commons/reference/index.html)
+  * Switching between the load-balancing algorithms, default is ```org.springframework.cloud.loadbalancer.core.RoundRobinLoadBalancer```
+* [openfeign](https://spring.io/projects/spring-cloud-openfeign#learn)
+  * write an interface, and use ```@FeignClient``` to call it.
+  * add ```@EnableFeignClients``` in application class to enable feign client.

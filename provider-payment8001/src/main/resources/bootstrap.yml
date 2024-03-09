@@ -16,6 +16,7 @@ spring:
         fail-fast: true
         hostname: 192.168.242.1 # add this in case of consul and services are running on different hosts.
         prefer-ip-address: true
+        port: ${server.port}
       config:
         format: YAML
         profile-separator: '-'

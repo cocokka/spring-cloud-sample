@@ -6,7 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-@Configuration
+/**
+ * replace load balancer with openFeign, because Spring Cloud integrates Eureka, Spring
+ * Cloud CircuitBreaker, as well as Spring Cloud LoadBalancer to provide a load-balanced
+ * http client when using Feign.
+ */
+// @Configuration
 public class RestTemplateConfig {
 
 	@Bean
