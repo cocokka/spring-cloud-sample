@@ -1,0 +1,48 @@
+server:
+  servlet:
+    context-path: /order
+  port: 80
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    consul:
+      host: master
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${server.port}
+        service-name: ${spring.application.name}
+        health-check-path: ${server.servlet.context-path}/actuator/health
+        health-check-interval: 15s
+        enabled: true
+        fail-fast: true
+        hostname: 192.168.242.1 # add this in case of consul and services are running on different hosts.
+        prefer-ip-address: true
+        port: ${server.port}
+      config:
+        format: YAML
+        profile-separator: '-'
+        enabled: true
+        watch:
+          wait-time: 10
+    openfeign:
+      client:
+        config:
+          default: # 全局默认超时配置
+            connectTimeout: 3000
+            read-timeout: 3000
+#            logger-level: full
+#          payment-service: # 特定service超时配置，覆盖全局配置。
+#            connectTimeout: 3000
+#            read-timeout: 3000
+      httpclient:
+        hc5:
+          enabled: true
+      compression:
+        request:
+          enabled: true
+          min-request-size: 2048
+          mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+        response:
+          enabled: true

@@ -1,6 +1,8 @@
 server:
   servlet:
     context-path: /payment
+  port: 8001
+
 spring:
   application:
     name: payment-service
@@ -9,6 +11,7 @@ spring:
       host: master
       port: 8500
       discovery:
+        instance-id: ${spring.application.name}:${server.port}
         service-name: ${spring.application.name}
         health-check-path: ${server.servlet.context-path}/actuator/health
         health-check-interval: 15s

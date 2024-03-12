@@ -33,6 +33,8 @@
         <spring.boot.version>3.2.0</spring.boot.version>
         <spring.cloud.version>2023.0.0</spring.cloud.version>
         <spring.cloud.alibaba.version>2022.0.0.0</spring.cloud.alibaba.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
+        <feign-hc5.version>13.2.1</feign-hc5.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -106,6 +108,17 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${httpclient5.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-hc5</artifactId>
+                <version>${feign-hc5.version}</version>
             </dependency>
 
             <dependency>

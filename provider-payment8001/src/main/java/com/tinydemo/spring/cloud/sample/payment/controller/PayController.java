@@ -8,6 +8,7 @@ import com.tinydemo.spring.cloud.sample.payment.service.PayService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor
 @Tag(name = "支付服务")
+@Slf4j
 public class PayController {
 
 	private final PayService payService;
@@ -32,6 +35,14 @@ public class PayController {
 	@Operation(description = "根据id查询支付信息")
 	public ResultData<Pay> getPay(@PathVariable("id") Integer id) {
 		return ResultData.success(payService.getById(id));
+	}
+
+	@GetMapping("/timeout")
+	@Operation(description = "测试超时")
+	public ResultData<Void> timeout() throws InterruptedException {
+		log.info("calling timeout...");
+		TimeUnit.SECONDS.sleep(30);
+		return ResultData.success();
 	}
 
 	@PostMapping("/")
